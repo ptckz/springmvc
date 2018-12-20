@@ -1,4 +1,4 @@
-package com.example.springmvc.services.impl;
+package com.example.springmvc.services;
 
 import java.util.Collections;
 
@@ -23,7 +23,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 
 @Service
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class AccountServiceImpl implements UserDetailsService {
+public class AccountService implements UserDetailsService {
 	
 	@Autowired
 	private AccountRepository accountRepository;

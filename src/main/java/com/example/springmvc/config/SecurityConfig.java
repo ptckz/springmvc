@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 
-import com.example.springmvc.services.impl.AccountServiceImpl;
+import com.example.springmvc.services.AccountService;
 
 @Configuration
 @EnableWebSecurity
@@ -22,7 +22,7 @@ import com.example.springmvc.services.impl.AccountServiceImpl;
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private AccountServiceImpl accountService;
+    private AccountService accountService;
 
     @Bean
     public TokenBasedRememberMeServices rememberMeServices() {

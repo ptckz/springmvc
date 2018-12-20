@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.springmvc.models.Account;
-import com.example.springmvc.services.impl.AccountServiceImpl;
+import com.example.springmvc.services.AccountService;
 import com.example.springmvc.signup.SignupForm;
 import com.example.springmvc.support.web.Ajax;
 import com.example.springmvc.support.web.MessageHelper;
@@ -24,7 +24,7 @@ class SignupController {
 	private static final String SIGNUP_VIEW_NAME = "signup/signup";
 
 	@Autowired
-	private AccountServiceImpl accountService;
+	private AccountService accountService;
 
 	@GetMapping("signup")
 	String signup(Model model, @RequestHeader(value = "X-Requested-With", required = false) String requestedWith) {

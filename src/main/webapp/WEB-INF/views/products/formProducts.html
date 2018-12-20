@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Welcome!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="../../../resources/js/jquery.min.js" th:src="@{/resources/js/jquery.min.js}"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/layout :: header"></div>
+<div class="container">
+    <form class="form-narrow form-horizontal" action="#" method="post" th:object="${product}" th:action="@{/products}">
+        <fieldset>
+            <legend>New Products</legend>
+            <div class="form-group">
+                <label for="inputName" class="col-lg-2 control-label">Name</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" th:field="*{name}" id="inputName" placeholder="Name" name="name" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPrice" class="col-lg-2 control-label">Price</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" th:field="*{price}" id="inputPrice" placeholder="Price" name="price" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <button type="submit" class="btn btn-default">Done!</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="container">
+    <form class="form-narrow form-horizontal" action="#" method="get" th:object="${product}" th:action="@{/products}">
+        <fieldset>
+            <legend>Results Products</legend>
+            <div class="form-group">
+            	<table class="table table-bordered table-striped">
+            		<tr>
+            			<th><label for="inputName" class="col-lg-2 control-label">Name</label></th>
+            			<th><label for="inputName" class="col-lg-2 control-label">Price</label></th>
+            			<th><label for="inputName" class="col-lg-2 control-label">Edit</label></th>
+            			<th><label for="inputName" class="col-lg-2 control-label">Delete</label></th>
+            		</tr>
+            		<tr th:if="${products.empty}">
+                  <td colspan="2"> No Products Available </td>
+                </tr>
+                <tr th:each="product : ${products}">
+            			<td><span th:text="${product.name}"> Prod </span></td>
+            			<td><span th:text="${product.price}"> Prod </span></td>
+            			<td><button type="submit" class="btn btn-default">Edit</button></td>
+            			<td><button type="submit" class="btn btn-default">Delete</button></td>
+            		</tr>
+            	</table>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div th:replace="fragments/layout :: footer"></div>
+</body>
+</html>

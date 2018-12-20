@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.example.springmvc.models.Account;
 import com.example.springmvc.repositories.AccountRepository;
-import com.example.springmvc.services.impl.AccountServiceImpl;
+import com.example.springmvc.services.AccountService;
 
 import static java.util.function.Predicate.isEqual;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,7 +26,7 @@ import static org.mockito.Mockito.*;
 public class AccountServiceImplTest {
 
 	@InjectMocks
-	private AccountServiceImpl accountService = new AccountServiceImpl();
+	private AccountService accountService = new AccountService();
 
 	@Mock
 	private AccountRepository accountRepositoryMock;
