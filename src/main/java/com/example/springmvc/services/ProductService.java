@@ -36,4 +36,12 @@ public class ProductService {
 	public List<Product> listAll() {
 		return productRepository.findAll();
 	}
+
+	public Product findById(Long id) {
+		return productRepository.findOne(id);
+	}
+	
+	public boolean isProductExist(Product product) {
+		return productRepository.findByName(product.getName()) != null;
+	}
 }

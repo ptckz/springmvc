@@ -35,32 +35,26 @@
     </form>
 </div>
 <div class="container">
-    <form class="form-narrow form-horizontal" action="#" method="get" th:object="${product}" th:action="@{/products}">
         <fieldset>
             <legend>Results Products</legend>
             <div class="form-group">
             	<table class="table table-bordered table-striped">
             		<tr>
+            			<th><label for="inputName" class="col-lg-2 control-label">ID</label></th>
             			<th><label for="inputName" class="col-lg-2 control-label">Name</label></th>
             			<th><label for="inputName" class="col-lg-2 control-label">Price</label></th>
-            			<th><label for="inputName" class="col-lg-2 control-label">Edit</label></th>
             			<th><label for="inputName" class="col-lg-2 control-label">Delete</label></th>
             		</tr>
-            		<tr th:if="${products.empty}">
-                  <td colspan="2"> No Products Available </td>
-                </tr>
-                <tr th:each="product : ${products}">
-            			<td><span th:text="${product.name}"> Prod </span></td>
-            			<td><span th:text="${product.price}"> Prod </span></td>
-            			<td><button type="submit" class="btn btn-default">Edit</button></td>
-            			<td><button type="submit" class="btn btn-default">Delete</button></td>
-            		</tr>
+                	<tr th:each="product : ${products}">
+              			<td><span th:text="${product.id}"> ID </span></td>
+              			<td><span th:text="${product.name}"> Name </span></td>
+                    <td><span th:text="${product.price}"> Price </a></td>
+                    <td><center><a class="delete btn btn-sm btn-danger" th:href="@{/products/delete/{id}(id=${product.id})}">Delete</a></center></td>
+            		  </tr>
             	</table>
             </div>
         </fieldset>
-    </form>
 </div>
-
 <div th:replace="fragments/layout :: footer"></div>
 </body>
 </html>
