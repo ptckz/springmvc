@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.springmvc.models.Product;
 import com.example.springmvc.services.ProductService;
+import com.example.springmvc.services.ResumeService;
 import com.example.springmvc.support.web.MessageHelper;
 
 @Controller
@@ -23,6 +24,9 @@ public class ProductController {
 
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	ResumeService resumeService;
 	
 	@ModelAttribute("module")
     String module() {
@@ -33,22 +37,20 @@ public class ProductController {
     String findAll(Model model) {
     	model.addAttribute("product", new Product());
     	model.addAttribute("products", productService.listAll());
+    	model.addAttribute("resumes", resumeService.listAllResumes());
     	
         return "products/formProducts";
     }
     
-    @PostMapping("/products")
+    @RequestMapping(value = "/products", method = RequestMethod.POST)
     public String newProduct(@ModelAttribute Product product, Model model) {
     	
-    	if(productService.isProductExist(product)) {
-    		return findAll(model);
-    	}
     	productService.createProduct(product);
     	
     	return findAll(model);
     }
     
-    @GetMapping("/products/delete/{id}")
+    @RequestMapping(value = "/products/delete/{id}", method = RequestMethod.GET)
     public String deleteProductForm(@PathVariable Long id, Model model) {
  
     	productService.deleteProductById(id);

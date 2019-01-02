@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
+import com.example.springmvc.dto.Resume;
 import com.example.springmvc.models.Product;
 import com.example.springmvc.repositories.ProductRepository;
 
@@ -35,6 +36,17 @@ public class ProductService {
 
 	public List<Product> listAll() {
 		return productRepository.findAll();
+	}
+	
+	public Long count() {
+		return productRepository.count();
+	}
+
+	public Long countProductsMax500() {
+		return productRepository.countProductsMax500();
+	}
+	public Long countProductsMin500() {
+		return productRepository.countProductsMin500();
 	}
 
 	public Product findById(Long id) {

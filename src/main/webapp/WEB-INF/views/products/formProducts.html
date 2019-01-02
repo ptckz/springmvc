@@ -55,6 +55,28 @@
             </div>
         </fieldset>
 </div>
+<div class="container">
+        <fieldset>
+            <legend>Resume</legend>
+            <div class="form-group">
+            	<table class="table table-bordered table-striped">
+            		<tr>
+            			<th><label for="inputName" class="col-lg-2 control-label">Products</label></th>
+            			<th><label for="inputName" class="col-lg-2 control-label">Max 500</label></th>
+            			<th><label for="inputName" class="col-lg-2 control-label">Min 500</label></th>
+            			<th><label for="inputName" class="col-lg-2 control-label">All Products</label></th>
+            		</tr>
+                	<tr th:each="resume : ${resumes}">
+              			<td><span th:text="${resume.countProducts}"> </span></td>
+              			<td><span th:text="${resume.countProductsMax500}"> </span></td>
+                    <td><span th:text="${resume.countProductsMin500}"> </a></td>
+                    <td><span th:text="${resume.countPriceAllProducts}"> </a></td>
+            		  </tr>
+            	</table>
+            </div>
+        </fieldset>
+</div>
+
 <div th:replace="fragments/layout :: footer"></div>
 </body>
 </html>
