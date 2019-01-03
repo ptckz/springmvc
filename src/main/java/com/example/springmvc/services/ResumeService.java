@@ -16,13 +16,12 @@ public class ResumeService {
 	
 	public Resume listAllResumes() {
 		
-		
 		Resume resume = new Resume();
 			
 		resume.setCountProducts(productService.count());
-		resume.setCountProductsMax500(productService.countProductsMax500());
-		resume.setCountProductsMin500(productService.countProductsMin500());
-		resume.setCountPriceAllProducts(0L);
+		resume.setCountProductsMax500(productService.countProductsMax500WithFilter());
+		resume.setCountProductsMin500(productService.countProductsMin500WithFilter());
+		resume.setCountPriceAllProducts(productService.countPriceAllProducts());
 
 		return resume;
 	}

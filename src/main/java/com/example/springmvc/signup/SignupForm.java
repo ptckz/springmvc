@@ -3,6 +3,7 @@ package com.example.springmvc.signup;
 import org.hibernate.validator.constraints.*;
 
 import com.example.springmvc.models.Account;
+import com.example.springmvc.validations.EmailExists;
 
 public class SignupForm {
 

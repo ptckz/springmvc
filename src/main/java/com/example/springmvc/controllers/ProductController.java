@@ -43,7 +43,7 @@ public class ProductController {
     }
     
     @RequestMapping(value = "/products", method = RequestMethod.POST)
-    public String newProduct(@ModelAttribute Product product, Model model) {
+    public String newProduct(@ModelAttribute Product product, Model model, RedirectAttributes ra) {
     	
     	productService.createProduct(product);
     	

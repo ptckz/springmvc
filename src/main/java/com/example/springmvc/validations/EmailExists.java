@@ -1,4 +1,4 @@
-package com.example.springmvc.signup;
+package com.example.springmvc.validations;
 
 import org.springframework.stereotype.Component;
 
@@ -18,7 +18,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({FIELD, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = com.example.springmvc.signup.EmailExistsValidator.class)
+@Constraint(validatedBy = com.example.springmvc.validations.EmailExistsValidator.class)
 @Documented
 public @interface EmailExists {
 
@@ -30,7 +30,7 @@ public @interface EmailExists {
 }
 
 @Component
-class EmailExistsValidator implements ConstraintValidator<com.example.springmvc.signup.EmailExists, String> {
+class EmailExistsValidator implements ConstraintValidator<com.example.springmvc.validations.EmailExists, String> {
 
     private final AccountRepository accountRepository;
 
@@ -38,9 +38,8 @@ class EmailExistsValidator implements ConstraintValidator<com.example.springmvc.
         this.accountRepository = accountRepository;
     }
 
-
     @Override
-    public void initialize(com.example.springmvc.signup.EmailExists constraintAnnotation) {
+    public void initialize(com.example.springmvc.validations.EmailExists constraintAnnotation) {
 
     }
 
