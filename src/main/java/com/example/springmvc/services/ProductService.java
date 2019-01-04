@@ -43,40 +43,25 @@ public class ProductService {
 	}
 	
 	public Long count() {
-		return productRepository.count();
+		return null;
 	}
 
 	public Long countProductsMax500() {
-		return productRepository.countProductsMax500();
+		return null;
 	}
 	public Long countProductsMax500WithFilter() {
-		
-		List<Product> all = listAll();
-		Stream<Product> filter = all.stream().filter(p -> p.getPrice() >= 500);
-		
-		return filter.count();
+		return null;
 	}
 	public Long countProductsMin500() {
-		return productRepository.countProductsMin500();
+		return null;
 	}
 	
 	public Long countProductsMin500WithFilter() {
-		
-		List<Product> all = listAll();
-		Stream<Product> filter = all.stream().filter(p -> p.getPrice() <= 500);
-		
-		return filter.count();
+		return null;
 	}
 	
 	public Long countPriceAllProducts() {
-		List<Product> list = listAll();
-		Long amountPrice = 0L;
-		
-		for(Product p : list) {
-			amountPrice += amountPrice + p.getPrice();
-		}
-		
-		return amountPrice;
+		return null;
 	}
 
 	public Product findById(Long id) {

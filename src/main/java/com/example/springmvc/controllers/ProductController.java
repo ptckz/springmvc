@@ -22,11 +22,9 @@ import com.example.springmvc.support.web.MessageHelper;
 @Controller
 public class ProductController {
 
-	@Autowired
-	ProductService productService;
+	//Injete um service para product
 	
-	@Autowired
-	ResumeService resumeService;
+	//Injete um service para resume
 	
 	@ModelAttribute("module")
     String module() {
@@ -35,26 +33,26 @@ public class ProductController {
 
     @GetMapping("/products")
     String findAll(Model model) {
+    	
     	model.addAttribute("product", new Product());
-    	model.addAttribute("products", productService.listAll());
-    	model.addAttribute("resumes", resumeService.listAllResumes());
+    	
+    //	model.addAttribute("products", productService.listAll());
+    //	model.addAttribute("resumes", resumeService.listAllResumes());
     	
         return "products/formProducts";
     }
     
+    /* Implemente o metodo para a criacao de um novo produto */
     @RequestMapping(value = "/products", method = RequestMethod.POST)
     public String newProduct(@ModelAttribute Product product, Model model, RedirectAttributes ra) {
-    	
-    	productService.createProduct(product);
     	
     	return findAll(model);
     }
     
+    /* Implemente o metodo de delete para um produto já existente */
     @RequestMapping(value = "/products/delete/{id}", method = RequestMethod.GET)
     public String deleteProductForm(@PathVariable Long id, Model model) {
  
-    	productService.deleteProductById(id);
-    	
     	return findAll(model);
     }
     
