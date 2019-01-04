@@ -7,14 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
-
-import com.example.springmvc.validations.ProductExists;
+//import com.example.springmvc.validations.ProductExists;
 
 @SuppressWarnings("serial")
 @Entity
@@ -32,9 +26,8 @@ public class Product implements Serializable {
 
     public Product() { }
 
-	public Product(long id, String name, Integer price) {
+	public Product(String name, Integer price) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.price = price;
 	}

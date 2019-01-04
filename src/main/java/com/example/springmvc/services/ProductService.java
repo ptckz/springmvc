@@ -22,6 +22,12 @@ public class ProductService {
 	@Autowired
 	ProductRepository productRepository;
 	
+	@PostConstruct
+	public void initIt() throws Exception {
+	  productRepository.save(new Product("Iphone 8 Max", 490));
+	  productRepository.save(new Product("S9 Galaxy Min", 3000));
+	}
+	
 	public Product createProduct(Product product) {
 		return productRepository.save(product);
 	}
